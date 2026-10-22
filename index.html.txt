@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دعوة عقد قران - كليمة وعائشة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa+Ink&family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F4F7F1;
+    --beige:#E2EAD9;
+    --tan:#C5D3B7;
+    --gold:#7D9272;
+    --rose:#CFDCC9;
+    --sage:#A4B79A;
+    --ink:#2E3B2E;
+    --ink-soft:#5B6D59;
+    --line:#CED9C8;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Tajawal', sans-serif;
+    font-weight:300;
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  .defs-holder{ position:absolute; width:0; height:0; overflow:hidden; }
+
+  .petal-layer{ position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:1; }
+  .petal{ position:absolute; top:-6%; border-radius:0 100% 0 100%; opacity:0; animation-name:fall; animation-timing-function:linear; animation-iteration-count:infinite; }
+  @keyframes fall{
+    0%{ transform:translateY(0) translateX(0) rotate(0deg); opacity:0; }
+    8%{ opacity:0.5; }
+    50%{ transform:translateY(52vh) translateX(24px) rotate(170deg); }
+    92%{ opacity:0.45; }
+    100%{ transform:translateY(108vh) translateX(-18px) rotate(340deg); opacity:0; }
+  }
+  @media (prefers-reduced-motion: reduce){ .petal{ display:none; } }
+
+  .section{
+    min-height:100vh;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:70px 26px;
+    position:relative;
+    z-index:2;
+    overflow:hidden;
+  }
+  @media (max-width:480px){ .section{ padding:54px 18px; min-height:100svh; } }
+
+  .corner-deco{ position:absolute; width:100px; height:100px; pointer-events:none; opacity:0.9; }
+  .corner-tl{ top:8px; left:8px; }
+  .corner-br{ bottom:8px; right:8px; transform:rotate(180deg); }
+  .corner-deco .corner-stem{ stroke:var(--sage); fill:none; stroke-width:2; }
+  .corner-deco .corner-leaf{ fill:var(--sage); opacity:0.75; }
+  @media (max-width:480px){ .corner-deco{ width:62px; height:62px; opacity:0.8; } }
+
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity 1s ease, transform 1s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+  @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1; transform:none; transition:none; } }
+
+  .blossom-petal{ fill:var(--rose); }
+  .blossom-center{ fill:var(--gold); }
+
+  .vine{ width:190px; height:46px; margin:28px auto; opacity:0.95; }
+  .vine .vine-line{ stroke:var(--gold); fill:none; stroke-width:1.1; }
+  .vine .leaf{ fill:var(--sage); opacity:0.7; transform-box:fill-box; transform-origin:center; animation:sway 5s ease-in-out infinite alternate; }
+  .vine .leaf:nth-child(odd){ animation-delay:0.5s; }
+  @keyframes sway{ 0%{ transform:rotate(-4deg); } 100%{ transform:rotate(4deg); } }
+  @media (prefers-reduced-motion: reduce){ .vine .leaf{ animation:none; } }
+
+  .mono-badge{
+    --size: clamp(175px, 42vw, 225px);
+    position:relative;
+    width:var(--size);
+    height:var(--size);
+    margin:0 auto;
+    border-radius:50%;
+    border:1px solid var(--gold);
+    background:radial-gradient(circle at 50% 42%, var(--beige) 0%, var(--cream) 78%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .mono-badge.small{ --size: clamp(120px, 30vw, 150px); }
+  .mono-a{
+    font-family:'Aref Ruqaa Ink', 'Aref Ruqaa', serif;
+    font-size:calc(var(--size) * 0.5);
+    color:var(--gold);
+    position:absolute;
+    line-height:1;
+    transform:translate(-12%, -10%);
+  }
+  .mono-j{
+    font-family:'Aref Ruqaa Ink', 'Aref Ruqaa', serif;
+    font-size:calc(var(--size) * 0.32);
+    color:var(--ink);
+    position:absolute;
+    line-height:1;
+    transform:translate(20%, 24%);
+  }
+  .mono-flourish{
+    position:absolute;
+    top:16%; right:20%;
+    width:calc(var(--size) * 0.17);
+    height:auto;
+  }
+  .mono-flourish path{ fill:var(--gold); }
+
+  .hero-wrap{ position:relative; height:170vh; }
+  .hero-sticky{
+    position:sticky;
+    top:0;
+    height:100vh;
+    width:100%;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:radial-gradient(circle at 50% 18%, rgba(226,234,217,0.6) 0%, transparent 70%);
+  }
+  .hero-bismillah-top{
+    position:absolute;
+    top:clamp(24px,6vh,54px);
+    left:0; right:0;
+    text-align:center;
+    font-family:'Aref Ruqaa', serif;
+    color:var(--gold);
+    font-size:clamp(17px,3vw,21px);
+    letter-spacing:0.5px;
+    z-index:6;
+  }
+  .monogram-scene{
+    position:relative;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:22px;
+  }
+  .hero-tagline{
+    font-family:'Aref Ruqaa', serif;
+    color:var(--ink);
+    font-size:clamp(22px,4.4vw,30px);
+  }
+  .curtain{
+    position:absolute;
+    top:0; bottom:0;
+    width:50%;
+    background:var(--beige);
+    z-index:3;
+    transition:none;
+  }
+  .curtain-left{ left:0; }
+  .curtain-right{ right:0; }
+  .seam-seal{
+    position:absolute;
+    top:50%; left:50%;
+    transform:translate(-50%,-50%);
+    z-index:4;
+    width:clamp(28px,6vw,36px);
+    height:auto;
+  }
+  .scroll-chevron{
+    position:absolute;
+    bottom:clamp(24px,6vh,50px);
+    left:50%;
+    transform:translateX(-50%);
+    z-index:5;
+    width:26px;
+    height:26px;
+    animation:chevBounce 2s ease-in-out infinite;
+  }
+  .scroll-chevron path{ stroke:var(--gold); stroke-width:2; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+  @keyframes chevBounce{ 0%,100%{ transform:translateX(-50%) translateY(0); } 50%{ transform:translateX(-50%) translateY(8px); } }
+
+  .ayah{ max-width:640px; font-family:'Aref Ruqaa', serif; font-size:clamp(19px, 3.4vw, 28px); line-height:2.15; color:var(--ink); }
+  .ayah-ref{ margin-top:18px; font-size:14px; letter-spacing:2px; color:var(--ink-soft); }
+  .eyebrow{ font-size:15px; color:var(--ink-soft); letter-spacing:4px; margin-bottom:18px; }
+
+  .names-full{ font-family:'Aref Ruqaa', serif; font-size:clamp(26px, 5.5vw, 42px); color:var(--ink); margin:20px 0 6px; }
+  .names-full .amp{ color:var(--gold); font-size:0.6em; margin:0 12px; }
+  .full-names{
+    margin-top:14px;
+    font-size:clamp(14px,2.4vw,16px);
+    color:var(--ink-soft);
+    line-height:2.1;
+    letter-spacing:0.3px;
+  }
+  .intro-line{ max-width:520px; font-size:16px; line-height:2.3; color:var(--ink-soft); margin-top:18px; }
+
+  .calendar-card{ width:min(360px, 88vw); background:var(--cream); border:1px solid var(--line); border-radius:10px; padding:26px 16px 22px; box-shadow:0 10px 30px rgba(46,59,46,0.08); }
+  .cal-month{ font-family:'Aref Ruqaa', serif; font-size:24px; color:var(--ink); margin-bottom:4px; }
+  .cal-year{ font-size:13px; color:var(--ink-soft); letter-spacing:2px; margin-bottom:18px; }
+  .cal-grid{ display:grid; grid-template-columns:repeat(7, 1fr); gap:6px 3px; }
+  .cal-grid span{ font-size:11px; color:var(--gold); letter-spacing:0.3px; padding-bottom:8px; border-bottom:1px solid var(--line); }
+  .cal-grid div{ font-size:13px; color:var(--ink-soft); padding:8px 0; border-radius:50%; }
+  .cal-grid .highlight{ background:var(--gold); color:#fff; font-weight:500; animation:glow 2.6s ease-in-out infinite; }
+  @keyframes glow{ 0%,100%{ box-shadow:0 0 0 0 rgba(125,146,114,0.45); } 50%{ box-shadow:0 0 0 7px rgba(125,146,114,0); } }
+  .day-name-badge{ display:inline-block; margin-top:22px; padding:10px 30px; border:1px solid var(--line); border-radius:30px; background:var(--beige); font-family:'Aref Ruqaa', serif; font-size:20px; color:var(--ink); }
+  .detail-sub{ font-size:14px; color:var(--ink-soft); margin-top:10px; letter-spacing:0.5px; }
+
+  .countdown-wrap{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:8px; }
+  .cd-box{ width:72px; padding:15px 0; background:var(--beige); border:1px solid var(--line); border-radius:10px; }
+  .cd-num{ font-family:'Aref Ruqaa', serif; font-size:28px; color:var(--gold); display:block; }
+  .cd-label{ font-size:11px; color:var(--ink-soft); letter-spacing:1px; margin-top:4px; display:block; }
+
+  .location-name{ font-family:'Aref Ruqaa', serif; font-size:clamp(26px, 5vw, 38px); color:var(--ink); margin:6px 0 4px; }
+  .map-frame{ width:min(420px, 90vw); height:230px; border:1px solid var(--line); border-radius:12px; overflow:hidden; margin-top:22px; box-shadow:0 10px 28px rgba(46,59,46,0.10); }
+  .map-frame iframe{ width:100%; height:100%; border:0; }
+  .map-btn{
+    display:inline-block; margin-top:20px; padding:14px 38px; background:var(--gold); color:#F4F7F1;
+    text-decoration:none; border-radius:30px; font-size:15px; letter-spacing:0.5px;
+    transition:transform 0.25s ease, box-shadow 0.25s ease; box-shadow:0 6px 18px rgba(125,146,114,0.30);
+  }
+  .map-btn:hover{ transform:translateY(-2px); box-shadow:0 10px 24px rgba(125,146,114,0.4); }
+
+  .rsvp-card{
+    width:min(520px, 90vw);
+    background:rgba(255,255,255,0.18);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:22px 18px;
+    box-shadow:0 10px 22px rgba(46,59,46,0.08);
+    margin-top:30px;
+  }
+  .rsvp-card .rsvp-title{
+    font-family:'Aref Ruqaa', serif;
+    font-size:clamp(22px,4vw,30px);
+    margin-bottom:12px;
+    color:var(--ink);
+  }
+  .rsvp-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:12px;
+    text-align:right;
+  }
+  .contact-item{
+    padding:10px 14px;
+    background:var(--beige);
+    border-radius:10px;
+    border:1px solid var(--line);
+    color:var(--ink-soft);
+    font-size:14px;
+    line-height:1.8;
+  }
+  .contact-item strong{
+    color:var(--ink);
+    font-weight:700;
+  }
+  .contact-item a{
+    color:var(--ink);
+    text-decoration:none;
+  }
+
+  .closing-text{ max-width:500px; font-family:'Aref Ruqaa', serif; font-size:clamp(18px,2.6vw,22px); line-height:2.1; color:var(--ink); }
+  .closing-dua{ max-width:440px; font-size:14px; color:var(--ink-soft); margin-top:18px; letter-spacing:0.3px; }
+
+  footer{ padding:36px 20px 50px; text-align:center; font-size:12px; color:#9DAE8D; letter-spacing:2px; position:relative; z-index:2; }
+</style>
+</head>
+<body>
+
+  <svg class="defs-holder" aria-hidden="true">
+    <defs>
+      <g id="blossom">
+        <ellipse class="blossom-petal" cx="0" cy="-9" rx="4.4" ry="7.6"/>
+        <ellipse class="blossom-petal" cx="0" cy="-9" rx="4.4" ry="7.6" transform="rotate(72)"/>
+        <ellipse class="blossom-petal" cx="0" cy="-9" rx="4.4" ry="7.6" transform="rotate(144)"/>
+        <ellipse class="blossom-petal" cx="0" cy="-9" rx="4.4" ry="7.6" transform="rotate(216)"/>
+        <ellipse class="blossom-petal" cx="0" cy="-9" rx="4.4" ry="7.6" transform="rotate(288)"/>
+        <circle class="blossom-center" cx="0" cy="0" r="3.2"/>
+      </g>
+      <g id="cornerSpray">
+        <path class="corner-stem" d="M10,130 C20,90 40,70 70,55 C90,45 95,35 90,15"/>
+        <path class="corner-leaf" d="M35,95 q10,-14 22,-6 q-8,14 -22,6 Z"/>
+        <path class="corner-leaf" d="M60,65 q12,-10 20,2 q-10,10 -20,-2 Z"/>
+        <use href="#blossom" transform="translate(25,112) scale(1)"/>
+        <use href="#blossom" transform="translate(58,72) scale(0.75)"/>
+        <use href="#blossom" transform="translate(86,26) scale(0.55)"/>
+      </g>
+    </defs>
+  </svg>
+
+  <div class="petal-layer" id="petalLayer" aria-hidden="true"></div>
+
+  <div class="hero-wrap" id="heroWrap">
+    <div class="hero-sticky">
+      <svg class="corner-deco corner-tl" viewBox="0 0 140 140" style="z-index:6;position:absolute;"><use href="#cornerSpray"/></svg>
+      <svg class="corner-deco corner-br" viewBox="0 0 140 140" style="z-index:6;position:absolute;"><use href="#cornerSpray"/></svg>
+
+      <p class="hero-bismillah-top">بسم الله الرحمن الرحيم</p>
+
+      <div class="monogram-scene" id="monogramScene">
+        <div class="mono-badge">
+          <span class="mono-a">أ</span>
+          <span class="mono-j">ج</span>
+          <svg class="mono-flourish" viewBox="0 0 40 40"><path d="M20,4 C30,4 34,14 28,22 C24,28 14,27 12,19 C10,13 16,8 20,4 Z"/></svg>
+        </div>
+        <p class="hero-tagline">دعوة عقد قران</p>
+      </div>
+
+      <div class="curtain curtain-left" id="curtainLeft"></div>
+      <div class="curtain curtain-right" id="curtainRight"></div>
+      <svg class="seam-seal" id="seamSeal" viewBox="0 0 24 24"><use href="#blossom" transform="translate(12,13) scale(1.05)"/></svg>
+      <svg class="scroll-chevron" id="scrollChevron" viewBox="0 0 26 26"><path d="M5,9 L13,17 L21,9"/></svg>
+    </div>
+  </div>
+
+  <section class="section">
+    <svg class="corner-deco corner-tl" viewBox="0 0 140 140"><use href="#cornerSpray"/></svg>
+    <svg class="corner-deco corner-br" viewBox="0 0 140 140"><use href="#cornerSpray"/></svg>
+
+    <p class="ayah reveal">
+      وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا
+      وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ
+    </p>
+    <p class="ayah-ref reveal">سورة الروم — الآية ٢١</p>
+
+    <svg class="vine reveal" viewBox="0 0 200 46">
+      <path class="vine-line" d="M10 24 Q 55 6, 100 24 T 190 24"/>
+      <path class="leaf" d="M40 26 q6 -10 16 -4 q-6 10 -16 4 Z"/>
+      <path class="leaf" d="M160 26 q-6 -10 -16 -4 q6 10 16 4 Z"/>
+      <use href="#blossom" transform="translate(55,14) scale(0.85)"/>
+      <use href="#blossom" transform="translate(100,24) scale(1)"/>
+      <use href="#blossom" transform="translate(145,14) scale(0.85)"/>
+    </svg>
+    <p class="eyebrow reveal">بمشيئة الله تعالى</p>
+  </section>
+
+  <section class="section">
+    <svg class="corner-deco corner-tl" viewBox="0 0 140 140"><use href="#cornerSpray"/></svg>
+    <svg class="corner-deco corner-br" viewBox="0 0 140 140"><use href="#cornerSpray"/></svg>
+
+    <p class="eyebrow reveal">تتشرف عائلتا العروسين بدعوتكم لحضور</p>
+
+    <div class="mono-badge small reveal">
+      <span class="mono-a">أ</span>
+      <span class="mono-j">ج</span>
+      <svg class="mono-flourish" viewBox="0 0 40 40"><path d="M20,4 C30,4 34,14 28,22 C24,28 14,27 12,19 C10,13 16,8 20,4 Z"/></svg>
+    </div>
+
+    <h1 class="names-full reveal">كليمة <span class="amp">و</span>عائشة</h1>
+    <p class="full-names reveal">
+      كليمة وعائشة<br>
+      في يومٍ مبارك ومشهود
+    </p>
+
+    <svg class="vine reveal" viewBox="0 0 200 46">
+      <path class="vine-line" d="M10 24 Q 55 42, 100 24 T 190 24"/>
+      <use href="#blossom" transform="translate(55,34) scale(0.85)"/>
+      <use href="#blossom" transform="translate(145,34) scale(0.85)"/>
+    </svg>
+
+    <p class="intro-line reveal">
+      بحضوركم الكريم وصالح دعائكم، يسعدهما دعوتكم لمشاركتهما
+      لحظة عقد قرانهما، بارك الله لهما وبارك عليهما
+    </p>
+  </section>
+
+  <section class="section">
+    <svg class="corner-deco corner-tl" viewBox="0 0 140 140"><use href="#cornerSpray"/></svg>
+    <svg class="corner-deco corner-br" viewBox="0 0 140 140"><use href="#cornerSpray"/></svg>
+
+    <p class="eyebrow reveal">موعد الحفل</p>
+
+    <div class="calendar-card reveal">
+      <p class="cal-month">ديسمبر</p>
+      <p class="cal-year">٢٠٢٦</p>
+      <div class="cal-grid">
+        <span>أحد</span><span>اثنين</span><span>ثلاثاء</span><span>أربعاء</span><span>خميس</span><span>جمعة</span><span>سبت</span>
+        <div></div><div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div>
+        <div>7</div><div>8</div><div>9</div><div>10</div><div class="highlight">11</div><div>12</div><div>13</div>
+        <div>14</div><div>15</div><div>16</div><div>17</div><div>18</div><div>19</div><div>20</div>
+        <div>21</div><div>22</div><div>23</div><div>24</div><div>25</div><div>26</div><div>27</div>
+        <div>28</div><div>29</div><div>30</div><div>31</div><div></div><div></div><div></div>
+      </div>
+    </div>
+
+    <div class="day-name-badge reveal">يوم الجمعة</div>
+    <p class="detail-sub reveal">الساعة ١٣:٠٠ - ١٧:٠٠</p>
+  </section>
+
+  <section class="section">
+    <svg class="corner-deco corner-tl" viewBox="0 0 140 140"><use href="#cornerSpray"/></svg>
+    <svg class="corner-deco corner-br" viewBox="0 0 140 140"><use href="#cornerSpray"/></svg>
+
+    <p class="eyebrow reveal">العد التنازلي حتى الفرحة</p>
+    <div class="countdown-wrap reveal">
+      <div class="cd-box"><span class="cd-num" id="cd-days">--</span><span class="cd-label">يوم</span></div>
+      <div class="cd-box"><span class="cd-num" id="cd-hours">--</span><span class="cd-label">ساعة</span></div>
+      <div class="cd-box"><span class="cd-num" id="cd-mins">--</span><span class="cd-label">دقيقة</span></div>
+      <div class="cd-box"><span class="cd-num" id="cd-secs">--</span><span class="cd-label">ثانية</span></div>
+    </div>
+    <p class="detail-sub reveal" id="cd-message" style="margin-top:22px;"></p>
+  </section>
+
+  <section class="section">
+    <svg class="corner-deco corner-tl" viewBox="0 0 140 140"><use href="#cornerSpray"/></svg>
+    <svg class="corner-deco corner-br" viewBox="0 0 140 140"><use href="#cornerSpray"/></svg>
+
+    <p class="eyebrow reveal">مكان الحفل</p>
+    <p class="location-name reveal">Ubungo Plaza A</p>
+    <p class="detail-sub reveal">Dar es Salaam, Tanzania</p>
+
+    <div class="map-frame reveal">
+      <iframe
+        src="https://www.google.com/maps?q=Ubungo+Plaza+A+Dar+es+Salaam+Tanzania&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <a class="map-btn reveal" href="https://www.google.com/maps/search/?api=1&query=Ubungo+Plaza+A+Dar+es+Salaam+Tanzania" target="_blank" rel="noopener">
+      فتح الموقع على الخريطة
+    </a>
+
+    <svg class="vine reveal" viewBox="0 0 200 46">
+      <path class="vine-line" d="M10 24 Q 55 6, 100 24 T 190 24"/>
+      <use href="#blossom" transform="translate(55,14) scale(0.85)"/>
+      <use href="#blossom" transform="translate(100,24) scale(1)"/>
+      <use href="#blossom" transform="translate(145,14) scale(0.85)"/>
+    </svg>
+  </section>
+
+  <section class="section">
+    <svg class="corner-deco corner-tl" viewBox="0 0 140 140"><use href="#cornerSpray"/></svg>
+    <svg class="corner-deco corner-br" viewBox="0 0 140 140"><use href="#cornerSpray"/></svg>
+
+    <div class="rsvp-card reveal">
+      <p class="rsvp-title">تأكيد الحضور</p>
+      <div class="rsvp-grid">
+        <div class="contact-item">
+          <strong>الهاتف:</strong>
+          <br>
+          <a href="tel:+255769285957">+255 769285957</a>
+        </div>
+        <div class="contact-item">
+          <strong>البريد الإلكتروني:</strong>
+          <br>
+          <a href="mailto:shamsamwamba15@gmail.com">shamsamwamba15@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <svg class="corner-deco corner-tl" viewBox="0 0 140 140"><use href="#cornerSpray"/></svg>
+    <svg class="corner-deco corner-br" viewBox="0 0 140 140"><use href="#cornerSpray"/></svg>
+
+    <div class="mono-badge small reveal">
+      <span class="mono-a">أ</span>
+      <span class="mono-j">ج</span>
+      <svg class="mono-flourish" viewBox="0 0 40 40"><path d="M20,4 C30,4 34,14 28,22 C24,28 14,27 12,19 C10,13 16,8 20,4 Z"/></svg>
+    </div>
+
+    <p class="closing-text reveal">
+      من هذا اليوم، تصير حكايتنا واحدة، وطريقنا واحدًا
+    </p>
+    <p class="closing-dua reveal">
+      اللهم بارك لهما، واجمع بينهما في خير ومودة ورحمة
+    </p>
+  </section>
+
+  <footer>
+    عقد قران كليمة وعائشة · Ubungo Plaza A · 11 Dec 2026
+  </footer>
+
+<script>
+  const items = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.2 });
+  items.forEach(i=>io.observe(i));
+
+  const layer = document.getElementById('petalLayer');
+  const colors = ['#CFDCC9', '#C5D3B7', '#7D9272'];
+  for(let i=0;i<10;i++){
+    const p = document.createElement('span');
+    p.className = 'petal';
+    const size = 8 + Math.random()*9;
+    p.style.width = size+'px';
+    p.style.height = size+'px';
+    p.style.left = (Math.random()*100)+'%';
+    p.style.background = colors[i % colors.length];
+    p.style.animationDuration = (14 + Math.random()*12)+'s';
+    p.style.animationDelay = (-(Math.random()*20))+'s';
+    layer.appendChild(p);
+  }
+
+  const heroWrap = document.getElementById('heroWrap');
+  const curtainLeft = document.getElementById('curtainLeft');
+  const curtainRight = document.getElementById('curtainRight');
+  const seamSeal = document.getElementById('seamSeal');
+  const monogramScene = document.getElementById('monogramScene');
+  const scrollChevron = document.getElementById('scrollChevron');
+
+  function updateHero(){
+    const rect = heroWrap.getBoundingClientRect();
+    const total = heroWrap.offsetHeight - window.innerHeight;
+    const scrolled = Math.min(Math.max(-rect.top, 0), Math.max(total,1));
+    const progress = total > 0 ? scrolled/total : 0;
+
+    curtainLeft.style.transform = `translateX(${-progress*100}%)`;
+    curtainRight.style.transform = `translateX(${progress*100}%)`;
+    seamSeal.style.opacity = Math.max(1 - progress*2, 0);
+    seamSeal.style.transform = `translate(-50%,-50%) scale(${Math.max(1-progress*1.4,0)})`;
+    monogramScene.style.opacity = Math.min(progress*1.8, 1);
+    monogramScene.style.transform = `scale(${0.86 + progress*0.14})`;
+    scrollChevron.style.opacity = Math.max(1 - progress*3, 0);
+  }
+  window.addEventListener('scroll', updateHero, { passive:true });
+  window.addEventListener('resize', updateHero);
+  updateHero();
+
+  const target = new Date('2026-12-11T13:00:00');
+  const elD = document.getElementById('cd-days');
+  const elH = document.getElementById('cd-hours');
+  const elM = document.getElementById('cd-mins');
+  const elS = document.getElementById('cd-secs');
+  const elMsg = document.getElementById('cd-message');
+
+  function tick(){
+    const now = new Date();
+    const diff = target - now;
+    if(diff <= 0){
+      elD.textContent='٠'; elH.textContent='٠'; elM.textContent='٠'; elS.textContent='٠';
+      elMsg.textContent = 'بارك الله لهما، حان وقت الفرحة!';
+      clearInterval(timer);
+      return;
+    }
+    elD.textContent = Math.floor(diff/(1000*60*60*24));
+    elH.textContent = Math.floor((diff/(1000*60*60))%24);
+    elM.textContent = Math.floor((diff/(1000*60))%60);
+    elS.textContent = Math.floor((diff/1000)%60);
+  }
+  tick();
+  const timer = setInterval(tick, 1000);
+</script>
+
+</body>
+</html>
